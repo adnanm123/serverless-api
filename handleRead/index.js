@@ -14,13 +14,13 @@ const nbaTeamSchema = new dynamoose.Schema({
 const nbaModel = dynamoose.model('nba-teams', nbaTeamSchema); // the first argument should match the table name on dynamoDB.
 
 exports.handler = async (event) => {
-  console.log(`HERE IS THE EVENT OBJECT`, event);
+  console.log('HERE IS THE EVENT OBJECT', event);
   // TODO implement
-  
-// let results = await nbaModel.query().exec();
+
+  // let results = await nbaModel.query().exec();
 
 let results = await nbaModel.scan().exec();
-console.log('results for our query',results.toJSON());
+console.log('results for our query',JSON.stringify(results));
   // sending back our list of nba from our DB
 
   const response = {

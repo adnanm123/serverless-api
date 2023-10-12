@@ -28,6 +28,10 @@ Create a single resource REST API using a domain model of your choosing, constru
   - Given an ID (##), removes the matching record from the database.
   - Returns an empty object.
 
+### Deployed URL
+
+[Deployed URL](https://ej5yj69ql3.execute-api.us-west-2.amazonaws.com/Production)
+
 ### UML
 
 ![Lab 18](lab18.png)

@@ -2,7 +2,7 @@
 
 const dynamoose = require('dynamoose');
 
-// Define our schema
+//Define our schema
 const nbaTeamSchema = new dynamoose.Schema({
   id: Number,
   name: String,
@@ -10,19 +10,20 @@ const nbaTeamSchema = new dynamoose.Schema({
   color: String,
 });
 
-// Create our 'Model'
+//Create our 'Model'
 const nbaModel = dynamoose.model('nba-teams', nbaTeamSchema);
 
 exports.handler = async (event) => {
   console.log('HERE IS THE EVENT OBJECT', event);
 
-  const requestBody = JSON.parse(event.body);
+  const requestBody = event.body;
   console.log('Request Body:', requestBody);
   console.log('Request ID:', requestBody.id);
-  
-  let results = await nbaModel.create(event.body);
 
-  // Prepare the response
+  let results = await nbaModel.create(requestBody);
+  console.log(results);
+
+  //Prepare the response
   const response = {
     statusCode: 201, // Use 201 for resource creation
     body: JSON.stringify(results), // Return the newly created record
